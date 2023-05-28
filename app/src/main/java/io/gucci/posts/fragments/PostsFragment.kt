@@ -1,6 +1,7 @@
 package io.gucci.posts.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -31,7 +32,9 @@ class PostsFragment: Fragment(R.layout.fragment_posts) {
         viewModel.liveData.observe(viewLifecycleOwner) { state ->
             when(state) {
                 is PostsState.Success -> {
-                    binding.recucler.adapter = PostAdapter(state.posts)
+                    val list = state.posts
+                    Log.d("ResponseList", "${list}")
+                    binding.recucler.adapter = PostAdapter(list)
                 }
                 is PostsState.Error -> {
                     Toast.makeText(requireContext(), "Error: ${state.message}" , Toast.LENGTH_SHORT).show()

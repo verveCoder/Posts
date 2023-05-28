@@ -31,8 +31,9 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
 
                 viewModelScope.launch(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        val list = response.body()
-                        liveData.value = PostsState.Success(list!!)
+                        val request = response.body()!!
+                        Log.d("Request", "onResponse ${request}")
+                        liveData.value = PostsState.Success(request)
                     }
                     else {
                         liveData.value = PostsState.Error(response.message())

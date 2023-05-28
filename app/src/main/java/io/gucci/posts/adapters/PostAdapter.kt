@@ -20,11 +20,10 @@ class PostAdapter(val listPost: Post): Adapter<PostsHolder>() {
         return PostsHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        return listPost.post.id
-    }
+    override fun getItemCount(): Int = listPost.post.size
 
     override fun onBindViewHolder(holder: PostsHolder, position: Int) {
+        val list = listPost.post[position]
         val image: RoundedImageView = holder.itemView.findViewById(R.id.userImage)
         val name: TextView = holder.itemView.findViewById(R.id.username)
         val content: TextView = holder.itemView.findViewById(R.id.message)
@@ -32,11 +31,11 @@ class PostAdapter(val listPost: Post): Adapter<PostsHolder>() {
         val comment: TextView = holder.itemView.findViewById(R.id.comment)
         val share: TextView = holder.itemView.findViewById(R.id.share)
 
-        Picasso.get().load(listPost.post.author.avatar).into(image)
-        name.text = listPost.post.author.name
-        content.text = listPost.post.content
-        like.text = listPost.post.likes.toString()
-        comment.text = listPost.post.comments.toString()
-        share.text = listPost.post.shares.toString()
+        Picasso.get().load(list.author.avatar).into(image)
+        name.text = list.author.name
+        content.text = list.content
+        like.text = list.likes.toString()
+        comment.text = list.comments.toString()
+        share.text = list.shares.toString()
     }
 }
