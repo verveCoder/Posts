@@ -19,6 +19,10 @@ class CreatePostFragment: Fragment(R.layout.fragment_create_post) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding = FragmentCreatePostBinding.bind(view)
 
+        binding.backToPosts.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         binding.create.setOnClickListener {
             val name : String = binding.Author.toString()
             val text : String = binding.newPostMessage.toString()

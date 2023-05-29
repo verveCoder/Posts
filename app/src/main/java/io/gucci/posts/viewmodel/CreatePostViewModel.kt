@@ -28,7 +28,7 @@ class CreatePostViewModel(application: Application) : AndroidViewModel(applicati
         postsService.setPost(post).enqueue(
             object : Callback<ResponseSetPost> { override fun onResponse(call: Call<ResponseSetPost>, response: Response<ResponseSetPost>) {
                 liveData.value = AddState.Done
-                Toast.makeText(getApplication(), "nav", Toast.LENGTH_SHORT).show()
+                Toast.makeText(getApplication(), "Your Post is Created", Toast.LENGTH_SHORT).show()
                 if (response.isSuccessful) {
                     Toast.makeText(getApplication(), "${response.body()}", Toast.LENGTH_SHORT).show()
                 }
