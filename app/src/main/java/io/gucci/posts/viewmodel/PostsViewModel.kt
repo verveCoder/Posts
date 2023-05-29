@@ -49,19 +49,3 @@ class PostViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 }
-
-//override fun onResponse(call: Call<PostList>, response: Response<PostList>) {
-//    if (response.isSuccessful){
-//        val posts = response.body()
-//        liveData.value = PostsState.Success(posts!!)
-//    }
-//    else{
-//        Log.d("TAB","onResponse : ${response.errorBody()?.toString()}")
-//        liveData.value = PostsState.Error("Error ${response.message()}")
-//    }
-//}
-//
-//override fun onFailure(call: Call<PostList>, t: Throwable) {
-//    Log.d("post","${t}")
-//    liveData.value = PostsState.Error("Error ${t.message}")
-//}
