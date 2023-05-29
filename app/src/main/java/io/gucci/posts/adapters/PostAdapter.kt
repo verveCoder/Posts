@@ -9,21 +9,21 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.makeramen.roundedimageview.RoundedImageView
 import com.squareup.picasso.Picasso
 import io.gucci.posts.R
-import io.gucci.posts.dto.Post
+import io.gucci.posts.dto.GetPost
 
 class PostsHolder(view: View) : ViewHolder(view)
 
-class PostAdapter(val listPost: Post): Adapter<PostsHolder>() {
+class PostAdapter(val listPost: GetPost): Adapter<PostsHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostsHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.posts_card, parent, false)
 
         return PostsHolder(view)
     }
 
-    override fun getItemCount(): Int = listPost.post.size
+    override fun getItemCount(): Int = listPost.posts.size
 
     override fun onBindViewHolder(holder: PostsHolder, position: Int) {
-        val list = listPost.post[position]
+        val list = listPost.posts[position]
         val image: RoundedImageView = holder.itemView.findViewById(R.id.userImage)
         val name: TextView = holder.itemView.findViewById(R.id.username)
         val content: TextView = holder.itemView.findViewById(R.id.message)

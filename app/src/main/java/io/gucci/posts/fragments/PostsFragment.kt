@@ -1,7 +1,6 @@
 package io.gucci.posts.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -27,13 +26,10 @@ class PostsFragment: Fragment(R.layout.fragment_posts) {
 
         binding.recucler.layoutManager = LinearLayoutManager(requireContext())
 
-        viewModel.fetch()
-
         viewModel.liveData.observe(viewLifecycleOwner) { state ->
             when(state) {
                 is PostsState.Success -> {
                     val list = state.posts
-                    Log.d("ResponseList", "${list}")
                     binding.recucler.adapter = PostAdapter(list)
                 }
                 is PostsState.Error -> {
@@ -43,5 +39,8 @@ class PostsFragment: Fragment(R.layout.fragment_posts) {
                 }
             }
         }
+
+        viewModel.fetch()
+
     }
 }
