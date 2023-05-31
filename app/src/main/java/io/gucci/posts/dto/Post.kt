@@ -22,7 +22,7 @@ data class GetPost(
 class PostsList: ArrayList<Post>()
 
 data class SetPost (
-	val name: String,
+	val author: String,
 	val content: String
 )
 
